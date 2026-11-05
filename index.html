@@ -256,8 +256,7 @@ function recolor(L){const key=[L.skin,L.hair,L.hs,L.acc,L.kit,L.kit2,L.pat,L.tri
   else if(d.top==='slick'){const rows=[[11,20],[9,21],[7,22]];rows.forEach(([a,b],i)=>{for(let x=a;x<=b;x++)add(x,-2+i,hb(1.18-i*.12-((x*3)%4)*.02))});for(let x=10;x<=19;x+=3)add(x,-2,hb(1.4))}
   else if(d.top==='curl'){for(let x=7;x<=21;x+=2){add(x,0,hb(1.05));add(x+1,-1,hb(1.18));add(x,-1,hb(.95))}for(let x=9;x<=19;x+=3)add(x,-2,hb(1.2))}}
  if(hs===4){ // topete: volume para frente com cachos
-  for(let y=-5;y<=2;y++){const x0=10+(y<-2?2:0)-(y>=0?2:0),x1=22+(y<-3?-2:0)+(y>=0?1:0);for(let x=x0;x<=x1;x++){const sh=y<-3?1.22:y<0?1.08:.92;add(x,y,hb(sh-((x+y)%3===0?.1:0)))}}
-  for(let y=-2;y<=4;y++)for(let x=21;x<=24;x++)if(!(x===24&&y>=3))add(x,y,hb(.9+((x+y)%2?.1:0)));
+  for(let y=-5;y<=2;y++){const x0=10+(y<-2?2:0)-(y>=0?2:0),x1=22+(y<-3?-2:0)+(y>=
   for(let x=9;x<=21;x+=3)add(x,-6,hb(1.25))}
  if(hs===3){ // moicano alto, desfiado e com pontas claras
   const hts=[4,6,5,7,6,8,6,5,4,3];for(let k=0;k<10;k++){const x=10+k,h=hts[k];for(let y=-h;y<=1;y++){const t=(y+h)/h;add(x,y,t<.35?tip:hb(1.05-.2*(1-t)+((x+y)%2?.05:0)))}}
@@ -1006,10 +1005,4 @@ const acct=()=>{const C=CLOUD,sy=C.guestMode?'Modo convidado: salvo só neste ap
 const packsGrid=()=>`<div class="packs">${ECON.packs.map(k=>`<div class="pk ${k.rec?'rec':''}">${k.rec?'<em>RECOMENDADO</em>':''}${ic('gem',30)}<b>${k.gems+k.bonus}</b><span class="bn">${k.bonus?k.gems+' + '+k.bonus+' bônus':' '}</span><span class="mut">${k.name}</span><span class="pr">${k.brl}</span><button class="b sm p" data-act="pbuy:${k.id}">COMPRAR</button></div>`).join('')}</div><div class="mut" style="margin-top:8px">Pagamentos ainda não configurados: nenhuma cobrança é feita e nenhum diamante é concedido.</div>`;
 const packsHtml=()=>`<div class="modal"><div class="mc wide"><h3 class="tt">Diamantes</h3>${packsGrid()}<button class="b" style="margin-top:10px" data-act="packsx">FECHAR</button></div></div>`;
 async function waitAuto(){for(let i=0;i<40&&CLOUD.st==='init';i++)await new Promise(r=>setTimeout(r,150));if(CLOUD.st==='ready')CLOUD.enter()}
-function boot(){window.GFX={q:PREF().gq||'high',fps:PREF().fps||60};window.PSTYLE=PREF().pst||'pixel';q('#pst').textContent='Jogadores: '+(window.PSTYLE==='circle'?'bolinhas':'pixel');window.MUTED=!!PREF().mute;q('#snd').textContent='Efeitos: '+(window.MUTED?'desligados':'ligados');CLOUD.init();const pf=PREF(),go0=()=>{nav=['gate'];render();let a=null;try{a=localStorage.getItem('nb.auto')}catch(e){}if(a==='1')waitAuto()};
- const go=()=>go0();showLoad(2000,()=>{if(pf.intro!=='never')playIntro(()=>{setPref({seen:1});go()},true);else go()},'Carregando NEXTBALL…')}
-
-boot();
-setInterval(()=>{NET.tick();NET.pub50()},50);
-setInterval(()=>{const n=nav[nav.length-1];if((n==='online'||n==='room')&&!(document.activeElement&&document.activeElement.tagName==='INPUT'))render()},900);
-</script></body></html>
+function boot(){window.GFX
